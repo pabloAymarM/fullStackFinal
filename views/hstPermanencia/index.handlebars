@@ -10,7 +10,7 @@
                 <h5 class="card-title">{{dataValues.id}} {{dataValues.placa}} - {{dataValues.modelo}}</h5>
                 <p class="card-text m-0">Data de Entrada: {{dataValues.dataEntrada}}</p>
                 <p class="card-text m-0">Data de Saída: {{dataValues.dataSaida}}</p>
-                <p class="card-text m-0">Preço: <p id="resultado"></p></p>
+                <p class="card-text m-0">Preço: <p id="resposta"></p></p>
                 </div>
 
                 <div class="card-footer text-body-secondary">
@@ -18,9 +18,9 @@
                 </div>
             </div>
         </div>
+        {{>modalDelete idItem=dataValues.id}}
         {{else}}
         <p class="text-light">Nenhum produto cadastrado ainda.</p>
-        {{>modalDelete idItem=dataValues.id}}
         {{/each}}  
     </div>
 

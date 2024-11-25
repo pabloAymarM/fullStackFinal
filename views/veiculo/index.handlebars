@@ -17,10 +17,9 @@
             </div>
         </div>
     </div>
-
+    {{>modalDelete2 idItem2=dataValues.id}}
     {{else}}
     <p class="text-light">Nenhum produto cadastrado ainda.</p> 
-    {{>modalDelete idItem2=dataValues.id}}
     {{/each}}
   </div>
 </section>

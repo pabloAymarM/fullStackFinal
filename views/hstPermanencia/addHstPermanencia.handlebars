@@ -5,19 +5,19 @@
         <section class="row mb-2">
             <div class="col-md-3">
                 <label class="text-warning" for="dataEntrada">Data de Entrada</label>
-                <input type="datetime-local" name="dataEntrada" id="dataEntrada" class="form-control bg-dark text-light border-warning">
+                <input type="date" name="dataEntrada" id="dataEntrada" class="form-control bg-dark text-light border-warning">
             </div>
             <div class="col-md-3">
                 <label class="text-warning" for="dataSaida">Data de Saída</label>
-                <input type="datetime-local" name="dataSaida" id="dataSaida" class="form-control bg-dark text-light border-warning">
+                <input type="date" name="dataSaida" id="dataSaida" class="form-control bg-dark text-light border-warning">
             </div>
             <div class="col-md-3">
-                <label class="text-warning" for="horas">Custo Total</label>
+                <label class="text-warning" for="horas">Horas No Estacionamento</label>
                 <input type="number" name="horas" id="horas" class="form-control bg-dark text-light border-warning">
             </div>
             <div class="col-md-3">
                 <label class="text-warning" for="horas">Custo Total</label>
-                <p id="resultado"></p>
+                <p class="text-light" id="resposta"></p>
             </div>
             {{!-- <div class="col-md-6">
                 <label class="text-warning" for="custoTotal">Custo Total</label>
@@ -36,7 +36,7 @@
             </select>
         </section> 
         <section class="d-grid">
-            <button class="btn btn-warning mt-2" type="submit">CALCULAR VALOR</button>
+            <button class="btn btn-warning mt-2" type="submit" onclick="custoTotal">CALCULAR VALOR</button>
         </section>
     </form>
 </section>
