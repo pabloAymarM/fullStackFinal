@@ -15,7 +15,5 @@ veiculo.hasOne(hstPermanencia,{ //veiculo tem um historico
     onUpdate: 'CASCADE'
 })
 
-hstPermanencia.belongsTo(veiculo) //historico pertence a um veiculo
-
 hstPermanencia.sync() //criar a tabela
 module.exports = hstPermanencia

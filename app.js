@@ -21,7 +21,7 @@ app.use('/veiculo', veiculoRouter)
 app.use('/hstPermanencia', hstPermanenciaRouter)
 
 //exibir informações na tela
-app.get('/estacionamento/', function(req, res){
+app.get('/estacionamento', function(req, res){
     res.render('home')
 })
 

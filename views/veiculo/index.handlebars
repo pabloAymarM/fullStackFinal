@@ -1,0 +1,26 @@
+<section class="container">
+  <h1 class="text-center display-6 text-warning">VEÍCULOS PRESENTES NO ESTACIONAMENTO</h1>
+  
+  <div class="container-fluid mb-4 row row-cols-1 row-cols-md-3 g-4">
+    {{!-- {{#each dados}} <!--Cada dado, mutiplicando a quantidade de produtos--> --}}
+    {{#each dados}}
+    <div class="col">
+        <div class="card h-100">
+            <div class="card-body">
+            <h5 class="card-title">{{dataValues.placa}}</h5>
+            <p class="card-text m-0">Proprietário: {{dataValues.proprietario}}</p>
+            <p class="card-text m-0">Modelo: {{dataValues.modelo}}</p>
+            </div>
+
+            <div class="card-footer text-body-secondary">
+                <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal{{dataValues.id}}">Excluir</a>
+            </div>
+        </div>
+    </div>
+
+    {{else}}
+    <p class="text-light">Nenhum produto cadastrado ainda.</p> 
+    {{>modalDelete idItem2=dataValues.id}}
+    {{/each}}
+  </div>
+</section>

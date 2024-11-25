@@ -1,0 +1,26 @@
+<section class="container">
+    <h1 class="text-center display-6 text-warning">CADASTRO DE VEÍCULOS</h1>
+    <form action="/veiculo/store" method="post">
+        <section class="mb-2">
+            {{!--Campo 1: Nome do Proprietário--}}
+            <label class="text-warning" for="proprietario">Proprietário</label>
+            <input type="text" name="proprietario" id="proprietario" class="form-control bg-transparent text-light border-warning" placeholder="Ex: Pablo Aymar">
+        </section>
+        
+        {{!--Campo 2: Placa e Modelo--}}
+        <section class="row mb-2">
+            <div class="col-md-6">
+                <label class="text-warning" for="placa">Placa</label>
+                <input type="text" name="placa" id="placa" class="form-control bg-dark text-light border-warning">
+            </div>
+            <div class="col-md-6">
+                <label class="text-warning" for="modelo">Modelo</label>
+                <input type="text" name="modelo" id="modelo" class="form-control bg-dark text-light border-warning">
+            </div>
+        </section>
+
+        <section class="d-grid">
+            <button href="/veiculo/show" class="btn btn-warning mt-2" type="submit">CADASTRAR VEÍCULO</button>
+        </section>
+    </form>
+</section>

@@ -5,6 +5,21 @@ const hstPermanencia = require('../models/hstPermanencia')
 const veiculo = require('../models/veiculo')
 const {where} = require('sequelize')
 
+// const calcularCustoTotal = (dataEntrada, dataSaida) => {
+//     const entrada = new Date(dataEntrada);
+//     const saida = new Date(dataSaida);
+    
+//     // Calcular a diferença em milissegundos
+//     const diferencaMs = saida - entrada;
+
+//     // Converter a diferença para horas
+//     const diferencaHoras = diferencaMs / (1000 * 60 * 60);
+
+//     // Definir um custo por hora (exemplo: R$ 10 por hora)
+//     const custoPorHora = 10;
+//     return diferencaHoras * custoPorHora;
+// };
+
 //criando rotas
 //1 - inserir dados na tabela
 router1.post('/store', async function(req, res){ //o sequelize recebe o conteúdo assíncrono
@@ -14,25 +29,27 @@ router1.post('/store', async function(req, res){ //o sequelize recebe o conteúd
         custoTotal: req.body.custoTotal,
         veiculoId: req.body.veiculoId //chave estrangeira
     })
+    // const custoTotal = calcularCustoTotal(dataEntrada, dataSaida);
+
     //console.log(req.body)  
     if(resultado){
-        res.redirect('/')
+        res.redirect('/estacionamento')
     }else{
         res.json({erro:'Erro.'})
     }
 })
 
 //2 - exibir página raíz de hstPermanencia
-router1.get('/show', function(req, res){
+router1.get('/', function(req, res){
     res.render('hstPermanencia/index')
 })
 
 //3 - consultar Db
-router1.get('/', async function(req, res){           
-    let resultado = await hstPermanencia.findAll({include:veiculo}) //o include é como o sequelize faz para realizar consultas com join
+router1.get('/show', async function(req, res){           
+    let resultado = await veiculo.findAll({include:hstPermanencia}) //o include é como o sequelize faz para realizar consultas com join
     if(resultado){
         console.log(resultado)
-        res.render('hstPermanencia/index',{dados:resultado})
+        res.render('hstPermanencia/index', {dados:resultado})
     }
     else{
         console.log('Não foi possível exibir os dados.')
@@ -58,7 +75,7 @@ router1.get('/create', async function(req, res){
         res.render('hstPermanencia/addHstPermanencia', {dados:resultado})
     }else{
         console.log('Não foi possível carregar nenhum dado.')
-        res.redirect('/') //redirecionando para a página inicial
+        res.redirect('/estacionamento') //redirecionando para a página inicial
     }
     res.render('hstPermanencia/addHstPermanencia')
 })

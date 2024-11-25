@@ -15,20 +15,20 @@ router2.post('/store', async function(req, res){ //o sequelize recebe o conteúd
     })
     //console.log(req.body)  
     if(resultado){
-        res.redirect('/')
+        res.redirect('/estacionamento')
     }else{
         res.json({erro:'Erro.'})
     }
 })
 
 //2 - exibir página raíz de veiculo
-router2.get('/show', function(req, res){
+router2.get('/', function(req, res){
     res.render('veiculo/index')
 })
 
 //3 - consultar Db
-router2.get('/', async function(req, res){           
-    let resultado = await veiculo.findAll({include:hstPermanencia}) //o include é como o sequelize faz para realizar consultas com join
+router2.get('/show', async function(req, res){           
+    let resultado = await veiculo.findAll() //o include é como o sequelize faz para realizar consultas com join
     if(resultado){
         console.log(resultado)
         res.render('veiculo/index',{dados:resultado})
@@ -46,18 +46,18 @@ router2.get('/destroy/:id', async function(req, res){
             id:req.params.id //recebendo o id via parâmetro que está na rota
         }
     })
-    res.redirect('/veiculo')
+    res.redirect('/hstPermanencia/show')
 })
 
 //5 - exibir formulário de cadastro
 router2.get('/create', async function(req, res){
-    let resultado = await hstPermanencia.findAll()
+    let resultado = await veiculo.findAll()
     if(resultado){
         console.log(resultado)
         res.render('veiculo/addVeiculo', {dados:resultado})
     }else{
         console.log('Não foi possível carregar nenhum dado.')
-        res.redirect('/') //redirecionando para a página inicial
+        res.redirect('/estacionamento') //redirecionando para a página inicial
     }
     res.render('veiculo/addVeiculo')
 })

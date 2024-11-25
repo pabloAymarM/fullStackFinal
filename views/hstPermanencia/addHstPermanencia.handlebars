@@ -1,0 +1,42 @@
+<section class="container">
+    <h1 class="text-center display-6 text-warning">CADASTRO DO HISTÓRICO DO VEÍCULO</h1>
+    <form action="/hstPermanencia/store" method="post">
+        {{!--Campo 3: Datas e Custo Total--}}
+        <section class="row mb-2">
+            <div class="col-md-3">
+                <label class="text-warning" for="dataEntrada">Data de Entrada</label>
+                <input type="datetime-local" name="dataEntrada" id="dataEntrada" class="form-control bg-dark text-light border-warning">
+            </div>
+            <div class="col-md-3">
+                <label class="text-warning" for="dataSaida">Data de Saída</label>
+                <input type="datetime-local" name="dataSaida" id="dataSaida" class="form-control bg-dark text-light border-warning">
+            </div>
+            <div class="col-md-3">
+                <label class="text-warning" for="horas">Custo Total</label>
+                <input type="number" name="horas" id="horas" class="form-control bg-dark text-light border-warning">
+            </div>
+            <div class="col-md-3">
+                <label class="text-warning" for="horas">Custo Total</label>
+                <p id="resultado"></p>
+            </div>
+            {{!-- <div class="col-md-6">
+                <label class="text-warning" for="custoTotal">Custo Total</label>
+                <input type="text" name="custoTotal" id="custoTotal" class="form-control bg-dark text-light border-warning">
+            </div> --}}
+        </section>
+
+        {{!-- Campo 3: Campo do Departamento --}}
+        <section class="mb-2">
+            <label class="text-warning" for="departamento">Escolha o Veículo</label>
+            <select name="departamento" id="departamento" class="form-select border-warning text-dark">
+                <option value="">Escolha uma opção...</option>
+                {{#each dados}}
+                <option value="{{dataValues.id}}">{{dataValues.placa}} - {{dataValues.modelo}}</option>
+                {{/each}}
+            </select>
+        </section> 
+        <section class="d-grid">
+            <button class="btn btn-warning mt-2" type="submit">CALCULAR VALOR</button>
+        </section>
+    </form>
+</section>
